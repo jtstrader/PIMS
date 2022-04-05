@@ -2,7 +2,6 @@
 
 import pickle
 import random
-import pprint as pp
 from functools import total_ordering
 import locale
 
@@ -19,61 +18,13 @@ class Address:
         self.city = city
         self.state = state
         self.zip = zip
-    
-    def csv_out(self):
-        return f'{self.address_1},{self.address_2},{self.city},{self.state},{self.zip},'
-
-    def __repr__(self):
-        if self.address_2 is None:
-            self.address_2 = 'NULL'
-        return f'{self.address_1:<40}{self.address_2:<40}{self.city:<40}{self.state:<6}{self.zip:<10}'
 
 # date object used to help manage writing date information
-@total_ordering
 class Date:
     def __init__(self, date, month, year):
         self.date = date
         self.month = month
         self.year = year
-    
-    # read in query format and parse that way
-    @classmethod
-    def query_init(self, qry_str):
-        self.date = qry_str[6:]
-        self.month = qry_str[4:6]
-        self.year = qry_str[0:4]
-    
-    def __eq__(self, other):
-        return self.date == other.date and self.month == other.month and self.year == other.year
-    
-    def __gt__(self, other):
-        if self.year > other.year:
-            return True
-        elif self.year < other.year:
-            return False
-        elif self.month > other.month:
-            return True
-        elif self.month < other.month:
-            return False
-        elif self.date > other.date:
-            return True
-        else:
-            return False
-
-    # Query Format: YYYYMMDD
-    def csv_out_depr(self):
-        return f'{self.year}-{f"0{self.month}" if self.month < 10 else self.month}-{f"0{self.date}" if self.date < 10 else self.date} 00:00:00'
-
-    def csv_out(self):
-        return f'{self.year}-{f"0{self.month}" if self.month < 10 else self.month}-{f"0{self.date}" if self.date < 10 else self.date}'
-
-    def __repr__(self):
-        out = (
-            f'{f"0{self.month}" if self.month < 10 else str(self.month)}/'
-            f'{f"0{self.date}" if self.date < 10 else str(self.date)}/'
-            f'{str(self.year)}'
-        )
-        return f'{out:<18}'
 
 # object used in the population list below
 class Person:
@@ -88,18 +39,6 @@ class Person:
         self.address = address
         self.partner_ssn = partner_ssn
 
-    def csv_out(self):
-        if self.dod is not None:
-            dod_out = "NULL"
-        else:
-            dod_out = self.dod.csv_out()
-        return f'{self.ssn},{self.first},{self.last},{self.sex},{self.dob.csv_out()},{self.age},{dod_out},{self.address.csv_out()},{self.partner_ssn},'
-
-    def __repr__(self):
-        if self.dod is None:
-            self.dod = f'{"NULL":<18}'
-        return f'{self.ssn:<15}{self.first:<20}{self.last:<20}{self.sex:<5}{self.dob}{self.age:<11}{self.dod}{self.address}{self.partner_ssn:<15}' 
-
 class Business:
     def __init__(self, id, name, address, worth, founding_year):
         self.id = id
@@ -107,9 +46,6 @@ class Business:
         self.address = address
         self.worth = worth
         self.founding_year = founding_year
-
-    def __repr__(self):
-        return f'{self.name:<40}{self.address}{self.worth:<15}{self.founding_year:<15}'
 
 class Occupation:
     def __init__(self, ssn, business_id, position, wage, salary):
@@ -124,11 +60,21 @@ class Occupation:
             self.business_id = 'NULL'
         if self.position is None:
             self.position = 'NULL'
+
+        # set currency formatting
         if self.wage is None:
             self.wage = 'NULL'
+            wage_prt = 'NULL'
+        else:
+            wage_prt = locale.currency(self.wage, grouping=True, symbol=True)
+ 
         if self.salary is None:
             self.salary = 'NULL'
-        return f'{self.ssn:<15}{self.business_id:<15}{self.position:<40}{self.wage:<12}{self.salary:<12}'
+            salary_prt = 'NULL'
+        else:
+            salary_prt = locale.currency(self.salary, grouping=True, symbol=True)
+        
+        return f'{self.ssn:<15}{self.business_id:<15}{self.position:<40}{wage_prt:<18}{salary_prt:<18}'
 
 # fill positions based on tier
 # tier 1 MUST be filled
@@ -268,9 +214,9 @@ def get_company_status(businesses, business_id):
     base_salary = occupation[tier][position_idx][1]
     salary = base_salary + company_worth_pay_adjust(worth, base_salary)
 
-    # if tier 3, 50% chance employee is waged
+    # if tier 3, 40% chance employee is waged
     if tier == 3:
-        if random.random() <= 0.05:
+        if random.random() <= 0.40:
             wage = salary // 52 // 40
             salary = None
 
@@ -298,8 +244,8 @@ def get_businesses():
 # write occupations out to occupations.dat in the data directory
 def write_occupations(occupations):
     with open ('./debug/occupations.dat', 'w') as f:
-        f.write(f'{"SSN":<15}{"Business ID":<15}{"Position":<40}{"Wage":<12}{"Salary":<12}\n')
-        f.write(f'{"*" * 94}\n')
+        f.write(f'{"SSN":<15}{"Business ID":<15}{"Position":<40}{"Wage":<18}{"Salary":<18}\n')
+        f.write(f'{"*" * 106}\n')
         for o in occupations:
             f.write(f'{o}\n')
 

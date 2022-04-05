@@ -2,6 +2,7 @@
 
 import random
 from collections import OrderedDict
+from datetime import date
 
 # generate wide variety of birth/death dates and the ages of a population
 # placed in a separate program to increase speed of gen_people.py
@@ -44,20 +45,24 @@ death_rates = {
 }
 death_rates = OrderedDict(sorted(death_rates.items(), key=lambda x: x[0]))
 
+base_date = date.today()
+b_month, b_day, b_year = base_date.month, base_date.day, base_date.year
+
+
 # get a date of birth for an individual
 def get_random_date():
-    month = random.randint(1, 12)
-    year = random.randint(1900, 2021)
+    month = int(random.random() * 12) + 1
+    year = int(random.random() * (b_year-1900)) + 1900
 
     # 31 days
     if month in [1, 3, 5, 7, 8, 10, 12]:
-        date = random.randint(1, 31)
-    # February -- check for leap year
+        date = int(random.random() * 31) + 1
+    # February
     elif month == 2:
-        date = random.randint(1, 28)
+        date = int(random.random() * 28) + 1
     # 30 days
     else:
-        date = random.randint(1, 30)
+        date = int(random.random() * 30) + 1
     
     return Date(date, month, year)
 
@@ -75,19 +80,20 @@ def gen_dates():
     if age_range == 0 or age_range == []:
         e_age = 0
     else:
-        e_age = random.randint(age_range[0], age_range[1])
+        # e_age = random.randint(age_range[0], age_range[1])
+        e_age = int(random.random() * (age_range[1]-age_range[0]+1)) * age_range[0]
 
-    if 2022 - dob.year <= e_age:
-        while 2022 - int(dob.year) <= e_age:
+    if b_year - dob.year <= e_age:
+        while b_year - int(dob.year) <= e_age:
             e_age -= 1
-    
+        
     # adjust age if required (base date -- March 28, 2022 )
-    if dob.month < 3 or (dob.month == 3 and dob.date < 28):
+    if dob.month < b_month or (dob.month == b_month and dob.date <= b_day):
         e_age += 1
 
     # calculate date of death (if applicable)
-    if ((dob.year + e_age < 2022) and (dob.month < 3 or (dob.month == 3 and dob.date < 28))) \
-        or dob.year + e_age < 2021:
+    if ((dob.year + e_age < b_year) and (dob.month < b_month or (dob.month == b_month and dob.date < b_day))) \
+        or dob.year + e_age < b_year-1:
         # person is dead, generate random date of death
         years_of_death = [dob.year + e_age, dob.year + e_age + 1]
         

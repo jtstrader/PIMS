@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-from asyncore import write
-from os import lstat
-from collections import OrderedDict
+
 from functools import total_ordering
 import random
 import pickle
 
 # generate list of random people to be put into the database
-
 
 # address of the individual
 class Address:
