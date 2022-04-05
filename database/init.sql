@@ -62,7 +62,7 @@ CREATE TABLE [Occupation] (
 
 -- declare variables, one for path appending and one for iterating through table
 -- insert your path to your csv directory here, make sure all are present before running SQL script!
-DECLARE @Path VARCHAR(255) = 'C:\Users\jtstr\OneDrive\Documents\CSC 312\PIMS\database\upload\csv\'
+DECLARE @Path VARCHAR(255) = 'YOUR PATH HERE'
 DECLARE @NewPath VARCHAR(255)
 DECLARE @Tables TABLE ([Table] VARCHAR(255))
 DECLARE @CurrTable VARCHAR(255)
@@ -73,7 +73,7 @@ DECLARE @SQL NVARCHAR(MAX)
 -- load table
 SET NOCOUNT ON
 INSERT INTO @Tables VALUES
-('Population'), ('Business'), ('Health'), ('Location'), ('MaritalStatus'), ('BusinessLocation')
+('Population'), ('Business'), ('Health'), ('Location'), ('MaritalStatus'), ('BusinessLocation'), ('Occupation')
 SET NOCOUNT OFF
 
 -- first clear rows from tables, must delete rows of dependent tables first to maintain
