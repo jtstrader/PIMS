@@ -220,19 +220,19 @@ def get_occupations(population, businesses):
         chance = random.random()
 
         if chance > 0.5: # between 1.000 - 0.500 = 50%
-            business_id = int(random.random() * 100)
+            business_idx = int(random.random() * 100)
         elif chance > 0.25: # between 0.50 - 0.250 = 25%
-            business_id = int(random.random() * 100) + 100
+            business_idx = int(random.random() * 100) + 100
         elif chance > 0.125: # between 0.250 - 0.125 = 12.5%
-            business_id = int(random.random() * 100) + 200
+            business_idx = int(random.random() * 100) + 200
         elif chance > 0.05: # between 0.125 - 0.050 = 7.5%
-            business_id = int(random.random() * 100) + 300
+            business_idx = int(random.random() * 100) + 300
         else: # between 0.050 - 0.000 = 5%
-            business_id = int(random.random() * 100) + 400
+            business_idx = int(random.random() * 100) + 400
         
-        position, wage, salary = get_company_status(businesses, business_id)
+        position, wage, salary = get_company_status(businesses, business_idx)
 
-        occupations.append(Occupation(p.ssn, business_id+1, position, wage, salary))
+        occupations.append(Occupation(p.ssn, businesses[business_idx].id, position, wage, salary))
     return occupations
 
 # generate the position, wage/salary of an individual at a given company

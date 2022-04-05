@@ -152,21 +152,21 @@ def get_dates():
 def create_population(ssn, first_names, last_names, dobs, ages, dods, streets, cities, states):
     population = []
     for i in range(1_000_000):
-        first_name_idx = random.randint(0, len(first_names)-1)
-        last_name_idx = random.randint(0, len(last_names)-1)
+        first_name_idx = int(random.random() * len(first_names))
+        last_name_idx = int(random.random() * len(last_names))
 
         # check for homelessness
         if random.uniform(0, 1) > 0.0017:
-            streets_1_idx = random.randint(0, len(streets)-1)
-            streets_2_idx = random.randint(0, len(streets)-1)
-            city_idx = random.randint(0, len(cities)-1)
-            state_idx = random.randint(0, len(states)-1)
+            streets_1_idx = int(random.random() * len(streets))
+            streets_2_idx = int(random.random() * len(streets))
+            city_idx = int(random.random() * len(cities))
+            state_idx =int(random.random() * len(states))
             
-            chance = random.randint(0, 10) # if a 3 or lower, get the second address
+            chance = int(random.random() * 11) # if a 3 or lower, get the second address
 
             population.append(
                 Person(ssn[i].rstrip(), first_names[first_name_idx][1].rstrip(), last_names[last_name_idx].rstrip(), first_names[first_name_idx][0], dobs[i], ages[i], dods[i],
-                Address(f'{random.randint(1, 1000)} {streets[streets_1_idx]}', f'{random.randint(1, 1000)} {streets[streets_2_idx]}' if chance <= 3 else "NULL", cities[city_idx], states[state_idx], random.randint(10000, 99999)), '000-00-0000'),
+                Address(f'{int(random.random() * 1000) + 1} {streets[streets_1_idx]}', f'{int(random.random() * 1001)} {streets[streets_2_idx]}' if chance <= 3 else "NULL", cities[city_idx], states[state_idx], int(random.random() * 90000) + 10000), '000-00-0000'),
             )
         # person is homeless
         else:
@@ -197,7 +197,7 @@ def set_married(population):
                 population[idx].partner_ssn = person.ssn
 
                 # 90% chance the married couple lives in the same home
-                if random.uniform(0, 1) < 0.9:
+                if random.random() < 0.9:
                     # 50% chance who gets whose address
                     if random.uniform(0, 5) < 0.5:
                         person.address = population[idx].address

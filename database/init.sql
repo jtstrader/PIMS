@@ -79,6 +79,7 @@ SET NOCOUNT OFF
 -- first clear rows from tables, must delete rows of dependent tables first to maintain
 -- referential integrity, so Population and Business will be deleted last
 SET NOCOUNT ON
+DELETE FROM [Occupation]
 DELETE FROM [MaritalStatus]
 DELETE FROM [Location]
 DELETE FROM [Health]
