@@ -3,12 +3,3 @@ a.out
 
 # vscode stuff
 .vscode/
-
-# large files
-upload/
-debug/
-csv/
-data/
-
-# backup files
-backup/

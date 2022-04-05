@@ -1,0 +1,8 @@
+# large files
+upload/
+debug/
+csv/
+data/
+
+# backup files
+backup/
