@@ -1,0 +1,13 @@
+# basic binaries that may be used
+a.out
+
+# vscode stuff
+.vscode/
+
+# large files
+upload/
+debug/
+population.dat
+businesses.dat
+occupations.dat
+
