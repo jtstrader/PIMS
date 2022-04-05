@@ -10,6 +10,8 @@ fi
 
 tar -xzf data.tar.gz
 
+mkdir -p debug/
+
 mkdir -p upload/csv
 mkdir -p upload/sql
 mkdir -p upload/pkl
