@@ -208,7 +208,7 @@ def set_married(population):
 
 # write the population information to a file, formatted like a table (left-aligned)
 def write_population(population):
-    with open('./upload/data/population.dat', 'w') as f:
+    with open('./debug/population.dat', 'w') as f:
         f.write(f'{"SSN":<15}{"First Name":<20}{"Last Name":<20}{"Sex":<5}{"DOB":<18}{"Age":<11}{"DOD":<18}{"Address 1":<40}{"Address 2":<40}{"City":<40}{"State":<6}{"Zip":<10}{"Partner SSN":<15}\n')
         f.write(f'{"*" * 258}\n')
         for p in population:

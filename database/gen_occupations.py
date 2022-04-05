@@ -297,7 +297,7 @@ def get_businesses():
     
 # write occupations out to occupations.dat in the data directory
 def write_occupations(occupations):
-    with open ('./upload/data/occupations.dat', 'w') as f:
+    with open ('./debug/occupations.dat', 'w') as f:
         f.write(f'{"SSN":<15}{"Business ID":<15}{"Position":<40}{"Wage":<12}{"Salary":<12}\n')
         f.write(f'{"*" * 94}\n')
         for o in occupations:
