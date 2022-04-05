@@ -105,13 +105,13 @@ def gen_dates():
     return (dob, e_age, dod)
 
 def main():
-    with open('./data/dates.dat', 'w') as f:
+    with open('./upload/data/dates.dat', 'w') as f:
         for _ in range(1_000_000):
             dob, age, dod = gen_dates()
             f.write(f'{LifeInfo(dob, age, dod)}\n')
 
 def test():
-    with open('./data/dates.dat') as f:
+    with open('./upload/data/dates.dat') as f:
         data = [x.rstrip().split(',') for x in f]
     
     for d in data:

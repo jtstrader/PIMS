@@ -2,7 +2,7 @@
 from string import ascii_uppercase
 
 # create every possible permutation for a state in uppercase letters (no two letters will be the same in a state abbr.)
-with open('./data/states.dat', 'w') as f:
+with open('./upload/data/states.dat', 'w') as f:
     count = 0
     for c1 in ascii_uppercase:
         for c2 in ascii_uppercase:

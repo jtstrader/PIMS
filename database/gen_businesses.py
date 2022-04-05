@@ -44,7 +44,7 @@ def get_address_values():
         streets = [street.rstrip() for street in f]
     with open('./data/cities.dat') as f:
         cities = [city.rstrip() for city in f]
-    with open('./data/states.dat') as f:
+    with open('./upload/data/states.dat') as f:
         states = [state.rstrip() for state in f]
     return (streets, cities, states)
 
@@ -73,7 +73,7 @@ def gen_info(streets, cities, states, companies):
 
 # write the business information to a file
 def write_businesses(businesses):
-    with open('./data/businesses.dat', 'w') as f:
+    with open('./upload/data/businesses.dat', 'w') as f:
         f.write(f'{"ID":<5}{"Business Name":<40}{"Address":<40}{"City":<40}{"State":<6}{"Zip":<10}{"Worth":<15}{"Founding Year":<15}\n')
         f.write(f'{"*" * 171}\n')
         for business in businesses:

@@ -16,7 +16,7 @@ int main() {
 
     // open output file and start writing random numbers
     // use a hash table to handle numbers, will use a lot of RAM but very fast
-    std::ofstream outFile("./data/ssn.dat");
+    std::ofstream outFile("./upload/data/ssn.dat");
     
     std::map<int, bool> hash;
 

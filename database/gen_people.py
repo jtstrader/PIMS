@@ -113,7 +113,7 @@ def get_first_last_names_and_ssn():
         first_names = [name.split(',') for name in f]
     with open('./data/last_names.dat') as f:
             last_names = [name for name in f]
-    with open('./data/ssn.dat') as f:
+    with open('./upload/data/ssn.dat') as f:
             ssn = [n for n in f]
     return (first_names, last_names, ssn)
 
@@ -123,13 +123,13 @@ def get_address_values():
         streets = [street.rstrip() for street in f]
     with open('./data/cities.dat') as f:
         cities = [city.rstrip() for city in f]
-    with open('./data/states.dat') as f:
+    with open('./upload/data/states.dat') as f:
         states = [state.rstrip() for state in f]
     return (streets, cities, states)
 
 # read from file and get all date info
 def get_dates():
-    with open('./data/dates.dat') as f:
+    with open('./upload/data/dates.dat') as f:
         data = [x.rstrip().split(',') for x in f]
     
     dobs = []
@@ -208,7 +208,7 @@ def set_married(population):
 
 # write the population information to a file, formatted like a table (left-aligned)
 def write_population(population):
-    with open('./data/population.dat', 'w') as f:
+    with open('./upload/data/population.dat', 'w') as f:
         f.write(f'{"SSN":<15}{"First Name":<20}{"Last Name":<20}{"Sex":<5}{"DOB":<18}{"Age":<11}{"DOD":<18}{"Address 1":<40}{"Address 2":<40}{"City":<40}{"State":<6}{"Zip":<10}{"Partner SSN":<15}\n')
         f.write(f'{"*" * 258}\n')
         for p in population:

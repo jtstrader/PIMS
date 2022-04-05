@@ -7,10 +7,8 @@ a.out
 # large files
 upload/
 debug/
-population.dat
-businesses.dat
-occupations.dat
-dates.dat
-ssn.dat
-states.dat
+csv/
+data/
 
+# backup files
+backup/

@@ -1,10 +1,19 @@
 #!/bin/bash
 
 # initialize data and create queries in the upload/ directory
+if [ ! -d "csv" ] || [ ! -d "data" ]; then
+    if [ ! -f "data.tar.gz" ]; then
+        echo 'init: err: data set corrupted and/or missing. exiting program.'
+        exit
+    fi
+fi
+
+tar -xzf data.tar.gz
 
 mkdir -p upload/csv
 mkdir -p upload/sql
 mkdir -p upload/pkl
+mkdir -p upload/data
 
 chmod u+x gen_people.py
 chmod u+x gen_businesses.py
