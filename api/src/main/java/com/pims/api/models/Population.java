@@ -13,8 +13,8 @@ public class Population {
     private String first_name;
     private String last_name;
 
-    @OneToMany(mappedBy = "population")
-    private List<Occupation> occupations;
+    @OneToOne(mappedBy = "population")
+    private Occupation occupation;
 
     @OneToMany(mappedBy = "population")
     private List<Location> locations;
@@ -51,12 +51,12 @@ public class Population {
         this.last_name = last_name;
     }
 
-    public List<Occupation> getOccupations() {
-        return occupations;
+    public Occupation getOccupations() {
+        return occupation;
     }
 
-    public void setOccupations(List<Occupation> occupations) {
-        this.occupations = occupations;
+    public void setOccupations(Occupation occupation) {
+        this.occupation = occupation;
     }
 
     public List<Location> getLocations() {

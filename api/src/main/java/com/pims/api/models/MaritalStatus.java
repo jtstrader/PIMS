@@ -9,24 +9,21 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class MaritalStatus {
     @Id
-    private String ssn;
+    //private String ssn;
     private String partner_ssn;
 
     @OneToOne
-    @JoinColumns({
-            @JoinColumn(name = "ssn"),
-            @JoinColumn(name = "partner_ssn")
-    })
+    @JoinColumn(name = "ssn")
     private Population population;
 
     public MaritalStatus(){}
 
     public String getSsn() {
-        return ssn;
+        return population.getSsn();
     }
 
     public void setSsn(String ssn) {
-        this.ssn = ssn;
+        this.getPopulation().setSsn(ssn);
     }
 
     public String getPartner_ssn() {

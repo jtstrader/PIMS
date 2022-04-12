@@ -10,22 +10,23 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Health {
     @Id
-    private String ssn;
+    //private String ssn;
     private Character sex;
     private Date date_of_birth;
     private Date date_of_death;
 
-    @OneToOne(mappedBy = "health")
+    @OneToOne
+    @JoinColumn(name = "ssn")
     private Population population;
 
     public Health(){}
 
     public String getSsn() {
-        return ssn;
+        return population.getSsn();
     }
 
     public void setSsn(String ssn) {
-        this.ssn = ssn;
+        this.population.setSsn(ssn);
     }
 
     public Character getSex() {

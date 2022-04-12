@@ -8,13 +8,13 @@ import javax.persistence.*;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Occupation {
     @Id
-    private String ssn;
-    private Integer business_id;
+    //private String ssn;
+    //private Integer business_id;
     private String position;
     private Integer wage;
     private Integer salary;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "ssn")
     private Population population;
 
@@ -25,19 +25,19 @@ public class Occupation {
     public Occupation(){}
 
     public String getSsn() {
-        return ssn;
+        return population.getSsn();
     }
 
     public void setSsn(String ssn) {
-        this.ssn = ssn;
+        this.getPopulation().setSsn(ssn);
     }
 
     public Integer getBusiness_id() {
-        return business_id;
+        return business.getBusiness_id();
     }
 
     public void setBusiness_id(Integer business_id) {
-        this.business_id = business_id;
+        this.business.setBusiness_id(business_id);
     }
 
     public String getPosition() {

@@ -9,7 +9,7 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Location {
     @Id
-    private String ssn;
+    //private String ssn;
     private String address_1;
     private String address_2;
     private String city;
@@ -23,11 +23,11 @@ public class Location {
    public Location(){}
 
     public String getSsn() {
-        return ssn;
+        return getPopulation().getSsn();
     }
 
     public void setSsn(String ssn) {
-        this.ssn = ssn;
+        this.getPopulation().setSsn(ssn);
     }
 
     public String getAddress_1() {
