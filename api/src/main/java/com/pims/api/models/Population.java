@@ -1,6 +1,8 @@
 package com.pims.api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,16 +15,20 @@ public class Population {
     private String first_name;
     private String last_name;
 
-    @OneToOne(mappedBy = "population")
-    private Occupation occupation;
-
-    @OneToMany(mappedBy = "population")
-    private List<Location> locations;
+    /*@OneToOne(mappedBy = "population")
+    @JsonManagedReference
+    private Occupation occupation;*/
 
     @OneToOne(mappedBy = "population")
+    @JsonManagedReference
+    private Location location;
+
+    @OneToOne(mappedBy = "population")
+    @JsonManagedReference
     private Health health;
 
     @OneToOne(mappedBy = "population")
+    @JsonManagedReference
     private MaritalStatus maritalStatus;
 
     public Population(){}
@@ -51,20 +57,20 @@ public class Population {
         this.last_name = last_name;
     }
 
-    public Occupation getOccupations() {
+    /*public Occupation getOccupation() {
         return occupation;
     }
 
-    public void setOccupations(Occupation occupation) {
+    public void setOccupation(Occupation occupation) {
         this.occupation = occupation;
+    }*/
+
+    public Location getLocation() {
+        return location;
     }
 
-    public List<Location> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(List<Location> locations) {
-        this.locations = locations;
+    public void setLocations(Location location) {
+        this.location = location;
     }
 
     public Health getHealth() {

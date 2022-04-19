@@ -1,5 +1,7 @@
 package com.pims.api.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -8,28 +10,30 @@ import javax.persistence.*;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Occupation {
     @Id
-    //private String ssn;
+    private String ssn;
     //private Integer business_id;
     private String position;
     private Integer wage;
     private Integer salary;
 
-    @OneToOne
-    @JoinColumn(name = "ssn")
-    private Population population;
+    /*@OneToOne
+    @PrimaryKeyJoinColumn
+    @JsonBackReference
+    private Population population;*/
 
     @ManyToOne
     @JoinColumn(name = "business_id")
+    @JsonBackReference
     private Business business;
 
     public Occupation(){}
 
     public String getSsn() {
-        return population.getSsn();
+        return ssn;
     }
 
     public void setSsn(String ssn) {
-        this.getPopulation().setSsn(ssn);
+        this.ssn = ssn;
     }
 
     public Integer getBusiness_id() {
@@ -64,13 +68,13 @@ public class Occupation {
         this.salary = salary;
     }
 
-    public Population getPopulation() {
+    /*public Population getPopulation() {
         return population;
     }
 
     public void setPopulation(Population population) {
         this.population = population;
-    }
+    }*/
 
     public Business getBusiness() {
         return business;

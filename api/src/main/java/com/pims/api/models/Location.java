@@ -1,5 +1,7 @@
 package com.pims.api.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -9,15 +11,16 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Location {
     @Id
-    //private String ssn;
+    private String ssn;
     private String address_1;
     private String address_2;
     private String city;
     private String state;
     private Integer zip;
 
-    @ManyToOne
-    @JoinColumn(name="ssn")
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    @JsonBackReference
     private Population population;
 
    public Location(){}

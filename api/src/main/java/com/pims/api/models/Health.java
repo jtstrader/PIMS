@@ -1,5 +1,7 @@
 package com.pims.api.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -17,6 +19,7 @@ public class Health {
 
     @OneToOne
     @JoinColumn(name = "ssn")
+    @JsonBackReference
     private Population population;
 
     public Health(){}

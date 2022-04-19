@@ -1,6 +1,8 @@
 package com.pims.api.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -8,19 +10,20 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity(name="Business")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","contacts"})
 public class Business {
     @Id
     private Integer business_id;
     private String name;
     private BigInteger worth;
-    private Date founding_year;
+    private Integer founding_year;
 
     @OneToMany(mappedBy = "business")
+    @JsonManagedReference
     private List<Occupation> occupations;
 
-    @OneToOne
-    @JoinColumn(name="business_id")
+    @OneToOne(mappedBy = "business")
+    @JsonManagedReference
     private BusinessLocation businessLocation;
 
     public Business(){}
@@ -49,11 +52,11 @@ public class Business {
         this.worth = worth;
     }
 
-    public Date getFounding_year() {
+    public Integer getFounding_year() {
         return founding_year;
     }
 
-    public void setFounding_year(Date founding_year) {
+    public void setFounding_year(Integer founding_year) {
         this.founding_year = founding_year;
     }
 

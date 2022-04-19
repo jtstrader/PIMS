@@ -1,13 +1,16 @@
 package com.pims.api.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Date;
 import java.util.List;
 
-@Entity(name="BusinessLocation")
+@Entity(name="business_location")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class BusinessLocation {
     @Id
@@ -17,17 +20,19 @@ public class BusinessLocation {
     private String state;
     private Integer zip;
 
-    @OneToOne(mappedBy = "businessLocation")
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    @JsonBackReference
     private Business business;
 
     public BusinessLocation(){}
 
     public Integer getBusiness_id() {
-        return business_id;
+        return business.getBusiness_id();
     }
 
     public void setBusiness_id(Integer business_id) {
-        this.business_id = business_id;
+        this.business.setBusiness_id(business_id);
     }
 
     public String getAddress() {
