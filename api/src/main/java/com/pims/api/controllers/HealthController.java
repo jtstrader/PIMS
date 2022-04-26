@@ -17,4 +17,7 @@ public class HealthController {
 
     @GetMapping
     public List<Health> list() { return healthRepository.findAll(); }
+
+    @RequestMapping("deathRate")
+    public List<String> getDeathRate() { return healthRepository.getAvgDeathRate(); }
 }

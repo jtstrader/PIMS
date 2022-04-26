@@ -17,4 +17,7 @@ public class OccupationController {
 
     @GetMapping
     public List<Occupation> list() { return occupationRepository.findAll(); }
+
+    @RequestMapping("positionSalaries")
+    public List<String> getPositionSalaries() { return occupationRepository.averagePositionSalary(); }
 }

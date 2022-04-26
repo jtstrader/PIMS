@@ -17,4 +17,7 @@ public class MaritalStatusController {
 
     @GetMapping
     public List<MaritalStatus> list() { return maritalStatusRepository.findAll(); }
+
+    @RequestMapping("couples")
+    public List<String> getMarriedPeople() { return maritalStatusRepository.getMarriedPeople(); }
 }

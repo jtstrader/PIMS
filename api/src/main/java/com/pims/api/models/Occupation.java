@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Occupation {
     @Id
     private String ssn;
-    //private Integer business_id;
+    private Integer business_id;
     private String position;
     private Integer wage;
     private Integer salary;
@@ -21,10 +21,10 @@ public class Occupation {
     @JsonBackReference
     private Population population;*/
 
-    @ManyToOne
-    @JoinColumn(name = "business_id")
-    @JsonBackReference
-    private Business business;
+    //@ManyToOne
+    //@JoinColumn(name = "business_id")
+    //@JsonBackReference
+    //private Business business;
 
     public Occupation(){}
 
@@ -37,11 +37,11 @@ public class Occupation {
     }
 
     public Integer getBusiness_id() {
-        return business.getBusiness_id();
+        return business_id;
     }
 
     public void setBusiness_id(Integer business_id) {
-        this.business.setBusiness_id(business_id);
+        this.business_id = business_id;
     }
 
     public String getPosition() {
@@ -76,11 +76,11 @@ public class Occupation {
         this.population = population;
     }*/
 
-    public Business getBusiness() {
+    /*public Business getBusiness() {
         return business;
     }
 
     public void setBusiness(Business business) {
         this.business = business;
-    }
+    } */
 }

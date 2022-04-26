@@ -18,9 +18,9 @@ public class Business {
     private BigInteger worth;
     private Integer founding_year;
 
-    @OneToMany(mappedBy = "business")
-    @JsonManagedReference
-    private List<Occupation> occupations;
+    //@OneToMany(mappedBy = "business")
+    //@JsonManagedReference
+    //private List<Occupation> occupations;
 
     @OneToOne(mappedBy = "business")
     @JsonManagedReference
@@ -60,13 +60,13 @@ public class Business {
         this.founding_year = founding_year;
     }
 
-    public List<Occupation> getOccupations() {
-        return occupations;
-    }
+    //public List<Occupation> getOccupations() {
+    //    return occupations;
+    //}
 
-    public void setOccupations(List<Occupation> occupations) {
-        this.occupations = occupations;
-    }
+    //public void setOccupations(List<Occupation> occupations) {
+    //    this.occupations = occupations;
+    //}
 
     public BusinessLocation getBusinessLocation() {
         return businessLocation;

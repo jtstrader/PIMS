@@ -12,13 +12,13 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Health {
     @Id
-    //private String ssn;
+    private String ssn;
     private Character sex;
     private Date date_of_birth;
     private Date date_of_death;
 
     @OneToOne
-    @JoinColumn(name = "ssn")
+    @PrimaryKeyJoinColumn
     @JsonBackReference
     private Population population;
 
