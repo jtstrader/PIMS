@@ -3,3 +3,6 @@ a.out
 
 # vscode stuff
 .vscode/
+
+# IntelliJ
+.idea
