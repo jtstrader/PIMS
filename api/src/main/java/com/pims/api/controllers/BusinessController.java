@@ -23,6 +23,6 @@ public class BusinessController {
     @RequestMapping("{business_id}")
     public Business get(@PathVariable Integer business_id) { return businessRepository.getById(business_id); }
 
-    @RequestMapping("avgSalary")
+    @RequestMapping("avg_salary")
     public List<String> getAvgSalary() { return businessRepository.getTop10Salaries(); }
 }

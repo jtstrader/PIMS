@@ -22,6 +22,6 @@ public class PopulationController {
     @RequestMapping("{ssn}")
     public Population get(@PathVariable String ssn) { return populationRepository.getById(ssn); }
 
-    @RequestMapping("test")
-    public List<String> listTest() {return populationRepository.getPop();}
+    @RequestMapping("pop")
+    public List<String> listTest() { return populationRepository.getPop(); }
 }

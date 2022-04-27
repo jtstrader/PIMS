@@ -1,1 +1,17 @@
-<p>table works!</p>
+<!-- center on screen a table view of data -->
+<div id="center-box">
+    <mat-card id="table-card">
+        <div id="death-rate-main-grid">
+            <div class="death-rate-sub-grid">
+                <div><b>State</b></div>
+                <div><b>Death Rate</b></div>
+            </div>
+            <div *ngFor='let dr of deathRates'>
+                <div class="death-rate-sub-grid">
+                    <div>{{dr.state_abbr}}</div>
+                    <div>{{dr.death_rate}}</div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>
