@@ -1,18 +1,30 @@
 <!-- center on screen a table view of data -->
-<div id="center-box">
-    <mat-card id="table-card">
-        <div id="death-rate-main-grid">
-            <div class="death-rate-sub-grid">
-                <div><b>State</b></div>
-                <div><b>Death Rate</b></div>
-            </div>
-            <div><hr></div>
-            <div *ngFor='let dr of deathRates'>
-                <div class="death-rate-sub-grid" style="background-color: {{alternateBackgroundColor()}}">
-                    <div>{{dr.state_abbr}}</div>
-                    <div>%{{deathRateAdjust(dr.death_rate)}}</div>
+<div class="center-box">
+    <button (click)=(setTable(0))>DEATH RATES</button>
+    <button (click)=(setTable(1))>MARITAL COUNTS</button>
+</div>
+<div class="center-box">
+    
+    <div *ngIf="table[0]">
+        <div *ngIf="deathRates !== undefined">
+            <mat-card id="table-card" class="mat-elevation-z5">
+                <div id="death-rate-main-grid">
+                    <div class="death-rate-sub-grid">
+                        <div><b>State</b></div>
+                        <div><b>Death Rate</b></div>
+                    </div>
+                    <div><hr></div>
+                    <div *ngFor='let dr of deathRates'>
+                        <div class="death-rate-sub-grid" style="background-color: {{alternateBackgroundColor()}}">
+                            <div>{{dr.state_abbr}}</div>
+                            <div>{{deathRateAdjust(dr.death_rate)}}%</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </mat-card>
         </div>
-    </mat-card>
+        <div *ngIf="deathRates === undefined">
+            <p>DATA NOT FOUND</p>
+        </div>
+    </div>
 </div>
