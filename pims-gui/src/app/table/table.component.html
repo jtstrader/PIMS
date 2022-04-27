@@ -6,10 +6,11 @@
                 <div><b>State</b></div>
                 <div><b>Death Rate</b></div>
             </div>
+            <div><hr></div>
             <div *ngFor='let dr of deathRates'>
-                <div class="death-rate-sub-grid">
+                <div class="death-rate-sub-grid" style="background-color: {{alternateBackgroundColor()}}">
                     <div>{{dr.state_abbr}}</div>
-                    <div>{{dr.death_rate}}</div>
+                    <div>%{{deathRateAdjust(dr.death_rate)}}</div>
                 </div>
             </div>
         </div>

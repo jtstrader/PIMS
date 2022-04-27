@@ -9,10 +9,12 @@
   margin: 10px;
   display: grid;
   grid-template-columns: auto;
+  text-align: center;
 }
 
 .death-rate-sub-grid {
   display: grid;
+  padding: 2px;
   grid-template-columns: 100px 100px;
   column-gap: 10px;
 }
@@ -33,4 +35,3 @@ nav a:hover {
 nav a.active {
   background-color: black;
 }
-  
