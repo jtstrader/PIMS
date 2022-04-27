@@ -13,12 +13,12 @@ export class CompanyAverageSalaryService {
 
   getTop10(): Observable<ICompanyAverageSalary[]> {
     return this.http.get<String[]>(this.url).pipe(map(result => {
-      let ret: ICompanyAverageSalary[] = [];
-      for (let x of result) {
-        ret.push(
-          {company_name: x.split(",")[0], avg_salary: Number(x.split(",")[1])}
-        )
-      }
+      let ret: ICompanyAverageSalary[] = result.map(x => {
+        return {
+          company_name: x.split(",")[0], 
+          avg_salary: Number(x.split(",")[1])
+        };
+      });
       console.log(ret);
       return ret;
     }),

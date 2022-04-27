@@ -1,23 +1,23 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { IDeathRatesByState } from '../interfaces/ideath-rates-by-state';
+import { IMaritalCountByState } from '../interfaces/imarital-count-by-state';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DeathRatesByStateService {
+export class MaritalCountByStateService {
 
   constructor(private http: HttpClient) { }
-  private url: string = "http://localhost:8080/api/health/death_rate";
+  private url: string = "http://localhost:8080/api/marital_status/couples" 
 
-  getDeathRates(): Observable<IDeathRatesByState[]> {
+  getMaritalCount(): Observable<IMaritalCountByState[]> {
     // sample result: ["FL, 0.160220", "GA, 0.039402"]
     return this.http.get<String[]>(this.url).pipe(map(result => {
-      let ret: IDeathRatesByState[] = result.map(x => {
+      let ret: IMaritalCountByState[] = result.map(x => {
         return {
-          state_abbr: x.split(",")[0],
-          death_rate: Number(x.split(",")[1])
+          state_abbr: x.split(",")[0], 
+          married_people: Number(x.split(",")[1])
         };
       });
       console.log(ret);
