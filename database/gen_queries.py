@@ -84,14 +84,14 @@ def main():
                 
 # write the csv for the Population table 
 def write_population_csv(population):
-    with open('./upload/csv/Population.csv', 'w') as f:
+    with open('./upload/csv/population.csv', 'w') as f:
         f.write('ssn,first_name,last_name\n')
         for p in population:
             f.write(f'{p.ssn},{p.first},{p.last}\n')
 
 # write the csv for the Location table
 def write_location_csv(population):
-    with open('./upload/csv/Location.csv', 'w') as f:
+    with open('./upload/csv/location.csv', 'w') as f:
         f.write('ssn,address_1,address_2,city,state,zip\n')
         for p in population:
             q = "\'"
@@ -100,7 +100,7 @@ def write_location_csv(population):
 
 # write the csv for the MaritalStatus table
 def write_marital_status_csv(population):
-    with open('./upload/csv/MaritalStatus.csv', 'w') as f:
+    with open('./upload/csv/marital_status.csv', 'w') as f:
         f.write('ssn,partner_ssn\n')
         for p in population:
             q = '\''
@@ -109,7 +109,7 @@ def write_marital_status_csv(population):
 
 # write the csv for the Health table
 def write_health_csv(population):
-    with open('./upload/csv/Health.csv', 'w') as f:
+    with open('./upload/csv/health.csv', 'w') as f:
         f.write('ssn,sex,date_of_birth,age,date_of_death\n')
         for p in population:
             if isinstance(p.dod, str):
@@ -125,7 +125,7 @@ def write_health_csv(population):
                 
 # write the csv for the Business table 
 def write_business_csv(businesses):
-    with open('./upload/csv/Business.csv', 'w') as f:
+    with open('./upload/csv/business.csv', 'w') as f:
         f.write('business_id,name,worth,founding_year\n')
         for b in businesses:
             out = (f'{b.id},{b.name},{b.worth},{b.founding_year}\n')
@@ -133,7 +133,7 @@ def write_business_csv(businesses):
                 
 # write the csv for the BusinessLocation table 
 def write_business_location_csv(businesses):
-    with open('./upload/csv/BusinessLocation.csv', 'w') as f:
+    with open('./upload/csv/business_location.csv', 'w') as f:
         f.write('business_id,address,city,state,zip\n')
         for b in businesses:
             fixes = fix_quote_in_str([b.address.address_1, b.address.city])
@@ -145,7 +145,7 @@ def write_business_location_csv(businesses):
 
 # write the csv for the Occupation table
 def write_occupation_csv(occupations):
-    with open('./upload/csv/Occupation.csv', 'w') as f:
+    with open('./upload/csv/occupation.csv', 'w') as f:
         f.write('ssn,business_id,position,wage,salary\n')
         for o in occupations:
             out = f'{o.ssn},{o.business_id},{o.position},{o.wage},{o.salary}\n'

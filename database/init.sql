@@ -2,16 +2,16 @@ USE [PIMS]
 GO
 
 -- create all tables if they have yet to be created
-IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='Population')
-CREATE TABLE [Population] (
+IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='population')
+CREATE TABLE [population] (
 	ssn varchar(11) NOT NULL PRIMARY KEY,
 	first_name varchar(255) NOT NULL,
 	last_name varchar(255) NOT NULL
 );
 
-IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='Location')
-CREATE TABLE [Location] (
-	ssn varchar(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES [Population],
+IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='location')
+CREATE TABLE [location] (
+	ssn varchar(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES [population],
 	address_1 varchar(255),
 	address_2 varchar(255),
 	city varchar(255),
@@ -19,41 +19,41 @@ CREATE TABLE [Location] (
 	zip int
 );
 
-IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='MaritalStatus')
-CREATE TABLE [MaritalStatus] (
-	ssn varchar(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES [Population],
-	partner_ssn varchar(11) FOREIGN KEY REFERENCES [Population]
+IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='marital_status')
+CREATE TABLE [marital_status] (
+	ssn varchar(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES [population],
+	partner_ssn varchar(11) FOREIGN KEY REFERENCES [population]
 );
 
-IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='Health')
-CREATE TABLE [Health] (
-	ssn varchar(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES [Population],
+IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='health')
+CREATE TABLE [health] (
+	ssn varchar(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES [population],
 	sex char(1) NULL,
 	date_of_birth date NOT NULL,
 	date_of_death date
 );
 
-IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='Business')
-CREATE TABLE [Business] (
+IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='business')
+CREATE TABLE [business] (
 	business_id int NOT NULL PRIMARY KEY,
 	name varchar(255) NOT NULL,
 	worth bigint,
 	founding_year int NOT NULL
 );
 
-IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='BusinessLocation')
-CREATE TABLE [BusinessLocation] (
-	business_id int NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES [Business],
+IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='business_location')
+CREATE TABLE [business_location] (
+	business_id int NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES [business],
 	address varchar(255),
 	city varchar(255),
 	state varchar(255),
 	zip int
 );
 
-IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='Occupation')
-CREATE TABLE [Occupation] (
-	ssn varchar(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES [Population],
-	business_id int FOREIGN KEY REFERENCES [Business],
+IF NOT EXISTS (SELECT * FROM [sys].[tables] WHERE [name]='occupation')
+CREATE TABLE [occupation] (
+	ssn varchar(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES [population],
+	business_id int FOREIGN KEY REFERENCES [business],
 	position varchar(255),
 	wage bigint,
 	salary bigint
@@ -73,19 +73,19 @@ DECLARE @SQL NVARCHAR(MAX)
 -- load table
 SET NOCOUNT ON
 INSERT INTO @Tables VALUES
-('Population'), ('Business'), ('Health'), ('Location'), ('MaritalStatus'), ('BusinessLocation'), ('Occupation')
+('population'), ('business'), ('health'), ('location'), ('marital_status'), ('business_location'), ('occupation')
 SET NOCOUNT OFF
 
 -- first clear rows from tables, must delete rows of dependent tables first to maintain
--- referential integrity, so Population and Business will be deleted last
+-- referential integrity, so population and business will be deleted last
 SET NOCOUNT ON
-DELETE FROM [Occupation]
-DELETE FROM [MaritalStatus]
-DELETE FROM [Location]
-DELETE FROM [Health]
-DELETE FROM [BusinessLocation]
-DELETE FROM [Population]
-DELETE FROM [Business]
+DELETE FROM [occupation]
+DELETE FROM [marital_status]
+DELETE FROM [location]
+DELETE FROM [health]
+DELETE FROM [business_location]
+DELETE FROM [population]
+DELETE FROM [business]
 SET NOCOUNT OFF
 
 -- loop and pop from the table
