@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscriber, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { IAveragePositionSalaryByBusiness } from '../interfaces/iaverage-position-salary-by-business';
 import { ICompanyAverageSalary } from '../interfaces/icompany-average-salary';
 import { IDeathRatesByState } from '../interfaces/ideath-rates-by-state';
@@ -26,6 +26,7 @@ export class TableComponent implements OnInit {
   ca_sub!: Subscription;
   ap_sub!: Subscription;
 
+  money = new Intl.NumberFormat('en-US', { style:'currency', currency: 'USD' });
   table: boolean[] = [false, false, false, false];
 
   deathRates!: IDeathRatesByState[];
@@ -37,14 +38,28 @@ export class TableComponent implements OnInit {
   
   companies!: String[];
 
-  avgPositionCompanySelection!: string;
-
-  money = new Intl.NumberFormat('en-US', { style:'currency', currency: 'USD' });
+  // _avgPositionCompanySelection changed by <mat-select> through ngModel
+  // when the value is changed in the setter function, re-filter the list
+  // to show the updated filter to the user
+  private _avgPositionCompanySelection!: string;
+  get avgPositionCompanySelection(): string {
+    return this._avgPositionCompanySelection;
+  }
+  set avgPositionCompanySelection(value: string) {
+    this._avgPositionCompanySelection = value;
+    console.log(this._avgPositionCompanySelection);
+    this.filteredAvgPositionSalary = this.avgPositionSalary.filter(
+      x => x.company_name == this._avgPositionCompanySelection
+    );
+  }
 
   backId: number = 0;
   bckgrdColors: string[] = ["#fff", "#ccc"];
 
+  // on page loading
   ngOnInit(): void {
+
+    // subscribe to all services and obtain payload
     this.dr_sub = this.deathRatesByState.getDeathRates().subscribe({
       next: drs => this.deathRates = drs,
       error: err => this.errorMessage = err
@@ -64,12 +79,13 @@ export class TableComponent implements OnInit {
       next: ap => {
         this.avgPositionSalary = ap;
 
+        // create a filtered list for the user to use, default value is first company obtained
         this.avgPositionCompanySelection = this.avgPositionSalary[0].company_name;
         this.filteredAvgPositionSalary = this.avgPositionSalary.filter(
           x => x.company_name == this.avgPositionCompanySelection
         );
 
-        this.companies = this.avgPositionSalary.map(x => x.company_name);
+        this.companies = this.avgPositionSalary.map(x => x.company_name).filter((v, i, a) => a.indexOf(v) == i);
       },
       error: err => this.errorMessage = err
     });

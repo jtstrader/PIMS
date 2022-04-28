@@ -65,12 +65,12 @@
     </div>
     <div *ngIf="table[3]" class="fade-in">
         <div *ngIf="avgPositionSalary !== undefined">
-            <!-- <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill">
                 <mat-label>Select Company</mat-label>
-                <mat-select>
-                    <mat-option *ngFor='let comp of companies' value="comp">{{comp}}</mat-option>
+                <mat-select [(ngModel)]="avgPositionCompanySelection" default="avgPositionCompanySelection">
+                    <mat-option *ngFor='let comp of companies' value="{{comp}}">{{comp}}</mat-option>
                 </mat-select>
-            </mat-form-field> -->
+            </mat-form-field>
             <mat-card id="table-card" class="mat-elevation-z5">
                 <div id="avg-position-main-grid">
                     <div class="avg-position-sub-grid">

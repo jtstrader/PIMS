@@ -46,7 +46,7 @@
 .company-salary-sub-grid {
   display: grid;
   padding: 2px;
-  grid-template-columns: 150px 120px;
+  grid-template-columns: 300px 120px;
   column-gap: 10px;
 }
 
@@ -60,7 +60,7 @@
 .avg-position-sub-grid {
   display: grid;
   padding: 2px;
-  grid-template-columns: 150px 270px 120px;
+  grid-template-columns: 300px 270px 120px;
   column-gap: 10px;
 }
 
@@ -107,6 +107,16 @@ button:focus {
   background-color: #ff7700 !important;;
 }
 
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow{
+  /*change color of selection arrow*/
+  color: #ff7700;
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  /*change color of selected text*/
+  color: #ff7700;
+}
+
 .avg-position-input {
   width: 200px;
 }
@@ -114,4 +124,12 @@ button:focus {
 .avg-position-input button {
   padding: 0px;
   margin: 0px;
+}
+
+mat-form-field {
+  width: 320px;
+}
+
+mat-select {
+  width: 300px;
 }
