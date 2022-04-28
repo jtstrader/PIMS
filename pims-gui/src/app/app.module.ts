@@ -13,6 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCardModule } from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { MatCardModule } from '@angular/material/card';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

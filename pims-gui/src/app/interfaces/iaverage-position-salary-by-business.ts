@@ -1,5 +1,5 @@
 export interface IAveragePositionSalaryByBusiness {
-    business_name: string,
+    company_name: string,
     position: string,
     avg_salary: number
 }

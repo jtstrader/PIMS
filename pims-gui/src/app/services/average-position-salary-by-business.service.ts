@@ -16,7 +16,7 @@ export class AveragePositionSalaryByBusinessService {
     return this.http.get<String[]>(this.url).pipe(map(result => {
       let ret: IAveragePositionSalaryByBusiness[] = result.map(x => {
         return {
-          business_name: x.split(",")[0],
+          company_name: x.split(",")[0],
           position: x.split(",")[1],
           avg_salary: Number(x.split(",")[2])
         };

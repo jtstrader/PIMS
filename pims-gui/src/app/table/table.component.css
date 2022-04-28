@@ -5,6 +5,9 @@
   justify-items: center;
 }
 
+.fade-in{-webkit-animation:fade-in 1.2s cubic-bezier(.39,.575,.565,1.000) both;animation:fade-in 1.2s cubic-bezier(.39,.575,.565,1.000) both}
+@-webkit-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@keyframes fade-in{0%{opacity:0}100%{opacity:1}}
+
 #death-rate-main-grid {
   margin: 10px;
   display: grid;
@@ -16,6 +19,48 @@
   display: grid;
   padding: 2px;
   grid-template-columns: 100px 100px;
+  column-gap: 10px;
+}
+
+#marital-count-main-grid {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: auto;
+  text-align: center;
+}
+
+.marital-count-sub-grid {
+  display: grid;
+  padding: 2px;
+  grid-template-columns: 100px 120px;
+  column-gap: 10px;
+}
+
+#company-salary-main-grid {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: auto;
+  text-align: center;
+}
+
+.company-salary-sub-grid {
+  display: grid;
+  padding: 2px;
+  grid-template-columns: 150px 120px;
+  column-gap: 10px;
+}
+
+#avg-position-main-grid {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: auto;
+  text-align: center;
+}
+
+.avg-position-sub-grid {
+  display: grid;
+  padding: 2px;
+  grid-template-columns: 150px 270px 120px;
   column-gap: 10px;
 }
 
@@ -34,4 +79,39 @@ nav a:hover {
 }
 nav a.active {
   background-color: black;
+}
+
+button {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  padding: 10px;
+}
+
+button:focus {
+  background-color: #ff7700;
+  color: white;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #ff7700 !important;
+ }
+
+::ng-deep .mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #ff7700 !important;
+} 
+
+::ng-deep .mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #ff7700 !important;;
+}
+
+.avg-position-input {
+  width: 200px;
+}
+
+.avg-position-input button {
+  padding: 0px;
+  margin: 0px;
 }
