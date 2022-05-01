@@ -1,1 +1,53 @@
-<p>graphs works!</p>
+<ngx-charts-bar-vertical
+  [view]=[700,400]
+  [results]="DeathRates"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="Graph1X"
+  [yAxisLabel]="Graph1Y">
+</ngx-charts-bar-vertical>
+
+<ngx-charts-bar-vertical
+  [view]=[700,400]
+  [results]="MaritalCounts"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="Graph2X"
+  [yAxisLabel]="Graph2Y">
+</ngx-charts-bar-vertical>
+
+<ngx-charts-bar-vertical
+  [view]=[700,400]
+  [results]="AverageSalary"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="Graph3X"
+  [yAxisLabel]="Graph3Y">
+</ngx-charts-bar-vertical>
+
+<ngx-charts-line-chart
+  [view]=[700,400]
+  [legend]=true
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [xAxisLabel]="Graph4X"
+  [yAxisLabel]="Graph4Y"
+  [timeline]="timeline"
+  [results]="PositionSalary"
+  >
+</ngx-charts-line-chart>
+
