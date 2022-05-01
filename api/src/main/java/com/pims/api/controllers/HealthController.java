@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,4 +21,14 @@ public class HealthController {
 
     @RequestMapping("death_rate")
     public List<String> getDeathRate() { return healthRepository.getAvgDeathRate(); }
+
+    @RequestMapping("death_ratio")
+    public List<String> getDeathRatio() {
+        List<String> tempList = healthRepository.getDeathRatio();
+        tempList = List.of(tempList.get(0).split(","));
+        List<String> retList = new ArrayList<String>();
+        retList.add("population alive,"+tempList.get(0));
+        retList.add("population dead,"+tempList.get(1));
+        return retList;
+    }
 }
