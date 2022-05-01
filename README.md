@@ -1,0 +1,4 @@
+# PIMS
+Welcome to Compsciencia, the nation of all computer scientists! This web application takes data generated to represent the peoples of Compsciencia in a comprehensive format will easy exentibility. This project acts less for functionality and more as a description of what Angular Java Spring can accomplish when working together. The project includes using Angular's object oriented style with things such as services, dependency injection, interfaces, as well as Java Spring's native query options, JPA Repositories, and much more!
+
+Data generation instructions and descriptions are included in the database/ directory, while build instructions for the main application are included in the api/ and pims-gui/ directories. Please note that this project is built on Java 17 and Node 16.15.0 and Angular CLI 13.3.3 (although certain compatibility features should allow building on different version as long as they are supported).
