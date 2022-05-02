@@ -19,10 +19,6 @@ import { IPositionSalariesFormatted } from '../interfaces/iposition-salaries-for
   styleUrls: ['./graphs.component.css']
 })
 export class GraphsComponent implements OnInit {
-  //DeathRates!: any[];
-  //MaritalCounts!: any[];
-  //AverageSalary!: any[];
-  //PositionSalary!: any[];
   deathRates!: IDeathRatesByState[];
   maritalCount!: IMaritalCountByState[];
   companyAvgSalary!: ICompanyAverageSalary[];
@@ -65,6 +61,8 @@ export class GraphsComponent implements OnInit {
     //Object.assign(this, { DeathRates1, MaritalCounts1, AverageSalary1, PositionSalary1 })
   }
 
+  table: boolean[] = [false, false, false, false];
+  
   ngOnInit(): void {
     this.dr_sub = this.deathRatesByState.getDeathRates().subscribe({
       next: drs => this.deathRates = drs,
@@ -85,6 +83,10 @@ export class GraphsComponent implements OnInit {
       next: ap => this.avgPositionSalaryFmt = ap,
       error: err => this.errorMessage = err
     });
+  }
+
+  setTable(idx: number): void {
+    this.table = this.table.map((_, index) => index == idx ? true : false);
   }
 
 }
