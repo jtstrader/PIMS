@@ -18,7 +18,7 @@ This also means that while the SSN and BusinessIDs must be unique, their presenc
  - **BusinessLocation**: a table that contains the most current registered location of a business' headquarters.
 
 # Schema
-<img src='resources/PIMS_Schema.png'>
+<img src='../resources/PIMS_Schema.png'>
 
 # Data Generation
 Names, streets, and city names were all pulled from various sources and compiled together. Credit through the original webpages where this information was found is shown below.
