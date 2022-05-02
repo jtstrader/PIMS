@@ -1,53 +1,102 @@
-<ngx-charts-bar-vertical
-  [view]=[700,400]
-  [results]="DeathRates"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="Graph1X"
-  [yAxisLabel]="Graph1Y">
-</ngx-charts-bar-vertical>
+<div class="content">
+	<div fxLayout="row wrap" fxFlexAlign="stretch" fxLayoutGap="16px grid">
+		<div fxFlex="100%" fxFlex.xl="40%" fxFlex.lg="55%" fxFlex.xs="10%" fxFlex.sm="33%" fxLayoutAlign="stretch">
+		    <mat-card class="mat-elevation-z4" >
+		      <mat-card-header>
+		        <mat-card-title>Death Rates Per State</mat-card-title>
+		      </mat-card-header>
+		      <mat-card-content>
+		      	<ngx-charts-bar-vertical
+		  			[view]=[700,400]
+		  			[results]="DeathRates"
+		  			[gradient]="gradient"
+		  			[xAxis]="showXAxis"
+		  			[yAxis]="showYAxis"
+		  			[legend]="showLegend"
+		  			[showXAxisLabel]="showXAxisLabel"
+		  			[showYAxisLabel]="showYAxisLabel"
+		  			[xAxisLabel]="Graph1X"
+		  			[yAxisLabel]="Graph1Y">
+				</ngx-charts-bar-vertical>
+		      </mat-card-content>
+		    </mat-card>
+      	</div>
+      	
+      	<div fxFlex="100%" fxFlex.xl="40%" fxFlex.lg="55%" fxFlex.xs="10%" fxFlex.sm="33%" fxLayoutAlign="stretch">
+		    <mat-card class="mat-elevation-z4" >
+		      <mat-card-header>
+		        <mat-card-title>Marital Counts Per State</mat-card-title>
+		      </mat-card-header>
+		      <mat-card-content>
+		      	<ngx-charts-bar-vertical
+	  				[view]=[700,400]
+	  				[results]="MaritalCounts"
+	  				[gradient]="gradient"
+	  				[xAxis]="showXAxis"
+	  				[yAxis]="showYAxis"
+	  				[legend]="showLegend"
+	  				[showXAxisLabel]="showXAxisLabel"
+	  				[showYAxisLabel]="showYAxisLabel"
+	  				[xAxisLabel]="Graph2X"
+	  				[yAxisLabel]="Graph2Y">
+				</ngx-charts-bar-vertical>
+		      </mat-card-content>
+		    </mat-card>
+      	</div>
+      	
+      	<div fxFlex="100%" fxFlex.xl="40%" fxFlex.lg="55%" fxFlex.xs="10%" fxFlex.sm="33%" fxLayoutAlign="stretch">
+		    <mat-card class="mat-elevation-z4" >
+		      <mat-card-header>
+		        <mat-card-title>Average Salary at Highest Valued Companies</mat-card-title>
+		      </mat-card-header>
+		      <mat-card-content>
+		      	<ngx-charts-bar-vertical
+				  [view]=[700,400]
+				  [results]="AverageSalary"
+				  [gradient]="gradient"
+				  [xAxis]="showXAxis"
+				  [yAxis]="showYAxis"
+				  [legend]="showLegend"
+				  [showXAxisLabel]="showXAxisLabel"
+				  [showYAxisLabel]="showYAxisLabel"
+				  [xAxisLabel]="Graph3X"
+				  [yAxisLabel]="Graph3Y">
+				</ngx-charts-bar-vertical>
+		      </mat-card-content>
+		    </mat-card>
+      	</div>
+      	
+      	<div fxFlex="100%" fxFlex.xl="40%" fxFlex.lg="55%" fxFlex.xs="10%" fxFlex.sm="33%" fxLayoutAlign="stretch">
+		    <mat-card class="mat-elevation-z4" >
+		      <mat-card-header>
+		        <mat-card-title>Position Salary Compared to Company's Net Worth</mat-card-title>
+		      </mat-card-header>
+		      <mat-card-content>
+		      	<ngx-charts-line-chart
+				  [view]=[700,400]
+				  [legend]=true
+				  [showXAxisLabel]="showXAxisLabel"
+				  [showYAxisLabel]="showYAxisLabel"
+				  [xAxis]="showXAxis"
+				  [yAxis]="showYAxis"
+				  [xAxisLabel]="Graph4X"
+				  [yAxisLabel]="Graph4Y"
+				  [timeline]="timeline"
+				  [results]="PositionSalary">
+				</ngx-charts-line-chart>
+		      </mat-card-content>
+		    </mat-card>
+      	</div>
+	
+	
+	</div>
+	
+	
 
-<ngx-charts-bar-vertical
-  [view]=[700,400]
-  [results]="MaritalCounts"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="Graph2X"
-  [yAxisLabel]="Graph2Y">
-</ngx-charts-bar-vertical>
+	
 
-<ngx-charts-bar-vertical
-  [view]=[700,400]
-  [results]="AverageSalary"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="Graph3X"
-  [yAxisLabel]="Graph3Y">
-</ngx-charts-bar-vertical>
+	
 
-<ngx-charts-line-chart
-  [view]=[700,400]
-  [legend]=true
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [xAxisLabel]="Graph4X"
-  [yAxisLabel]="Graph4Y"
-  [timeline]="timeline"
-  [results]="PositionSalary"
-  >
-</ngx-charts-line-chart>
+	
+</div>
 

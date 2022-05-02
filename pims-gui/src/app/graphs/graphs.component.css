@@ -1,0 +1,12 @@
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    width: 700px;
+}
+
+.chart-container {
+    margin: auto;
+    width: 70%;
+}
