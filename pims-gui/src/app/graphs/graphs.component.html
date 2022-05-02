@@ -8,7 +8,7 @@
 		      <mat-card-content>
 		      	<ngx-charts-bar-vertical
 		  			[view]=[700,400]
-		  			[results]="DeathRates"
+		  			[results]="deathRates"
 		  			[gradient]="gradient"
 		  			[xAxis]="showXAxis"
 		  			[yAxis]="showYAxis"
@@ -30,7 +30,7 @@
 		      <mat-card-content>
 		      	<ngx-charts-bar-vertical
 	  				[view]=[700,400]
-	  				[results]="MaritalCounts"
+	  				[results]="maritalCount"
 	  				[gradient]="gradient"
 	  				[xAxis]="showXAxis"
 	  				[yAxis]="showYAxis"
@@ -52,7 +52,7 @@
 		      <mat-card-content>
 		      	<ngx-charts-bar-vertical
 				  [view]=[700,400]
-				  [results]="AverageSalary"
+				  [results]="companyAvgSalary"
 				  [gradient]="gradient"
 				  [xAxis]="showXAxis"
 				  [yAxis]="showYAxis"
@@ -82,7 +82,7 @@
 				  [xAxisLabel]="Graph4X"
 				  [yAxisLabel]="Graph4Y"
 				  [timeline]="timeline"
-				  [results]="PositionSalary">
+				  [results]="avgPositionSalaryFmt">
 				</ngx-charts-line-chart>
 		      </mat-card-content>
 		    </mat-card>

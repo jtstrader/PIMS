@@ -17,8 +17,8 @@
                     <div><hr></div>
                     <div *ngFor='let dr of deathRates'>
                         <div class="death-rate-sub-grid" style="background-color: {{alternateBackgroundColor()}}">
-                            <div>{{dr.state_abbr}}</div>
-                            <div>{{deathRateAdjust(dr.death_rate)}}%</div>
+                            <div>{{dr.name}}</div>
+                            <div>{{deathRateAdjust(dr.value)}}%</div>
                         </div>
                     </div>
                 </div>
@@ -36,8 +36,8 @@
                     <div><hr></div>
                     <div *ngFor='let mc of maritalCount'>
                         <div class="marital-count-sub-grid" style="background-color: {{alternateBackgroundColor()}}">
-                            <div>{{mc.state_abbr}}</div>
-                            <div>{{mc.married_people}}</div>
+                            <div>{{mc.name}}</div>
+                            <div>{{mc.value}}</div>
                         </div>
                     </div>
                 </div>
@@ -55,8 +55,8 @@
                     <div><hr></div>
                     <div *ngFor='let ca of companyAvgSalary'>
                         <div class="company-salary-sub-grid" style="background-color: {{alternateBackgroundColor()}}">
-                            <div>{{ca.company_name}}</div>
-                            <div>{{money.format(ca.avg_salary)}}</div>
+                            <div>{{ca.name}}</div>
+                            <div>{{money.format(ca.value)}}</div>
                         </div>
                     </div>
                 </div>

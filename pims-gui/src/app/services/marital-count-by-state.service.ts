@@ -16,8 +16,8 @@ export class MaritalCountByStateService {
     return this.http.get<String[]>(this.url).pipe(map(result => {
       let ret: IMaritalCountByState[] = result.map(x => {
         return {
-          state_abbr: x.split(",")[0], 
-          married_people: Number(x.split(",")[1])
+          name: x.split(",")[0], 
+          value: Number(x.split(",")[1])
         };
       });
       console.log(ret);

@@ -1,4 +1,4 @@
 export interface ICompanyAverageSalary {
-    company_name: string,
-    avg_salary: number
+    name: string,
+    value: number
 }
