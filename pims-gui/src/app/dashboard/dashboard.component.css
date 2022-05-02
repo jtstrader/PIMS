@@ -16,6 +16,8 @@ img {
 }
 
 .chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: auto;
-    width: 70%;
 }

@@ -27,8 +27,8 @@ public class HealthController {
         List<String> tempList = healthRepository.getDeathRatio();
         tempList = List.of(tempList.get(0).split(","));
         List<String> retList = new ArrayList<String>();
-        retList.add("population alive,"+tempList.get(0));
-        retList.add("population dead,"+tempList.get(1));
+        retList.add("Population Alive,"+tempList.get(0));
+        retList.add("Population Dead,"+tempList.get(1));
         return retList;
     }
 }
