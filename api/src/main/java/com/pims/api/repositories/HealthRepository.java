@@ -15,4 +15,10 @@ public interface HealthRepository extends JpaRepository<Health, String> {
             "GROUP BY l.state " +
             "ORDER BY [Average Death Rate] DESC")
     public List<String> getAvgDeathRate();
+
+    @Query(nativeQuery = true, value= "SELECT " +
+            "SUM(CASE WHEN h.date_of_Death IS NULL THEN 1.0 ELSE 0.0 END) AS [people alive], " +
+            "SUM(CASE WHEN h.date_of_Death IS NOT NULL THEN 1.0 ELSE 0.0 END) AS [people dead]" +
+            "FROM Health h")
+    public List<String> getDeathRatio();
 }

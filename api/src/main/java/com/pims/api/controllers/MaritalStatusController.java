@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/maritalStatus")
+@RequestMapping("/api/marital_status")
 public class MaritalStatusController {
     @Autowired
     private MaritalStatusRepository maritalStatusRepository;

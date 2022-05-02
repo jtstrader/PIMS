@@ -6,3 +6,4 @@ a.out
 
 # IntelliJ
 .idea
+node_modules/

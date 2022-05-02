@@ -1,1 +1,93 @@
-<p>table works!</p>
+<!-- center on screen a table view of data -->
+<div class="center-box">
+    <button (click)=(setTable(0))>DEATH RATES</button>
+    <button (click)=(setTable(1))>MARITAL COUNTS</button>
+    <button (click)=(setTable(2))>COMPANY AVERAGE SALARY</button>
+    <button (click)=(setTable(3))>AVERAGE SALARY PER POSITION</button>
+</div>
+<div class="center-box">
+    <div *ngIf="table[0]" class="fade-in">
+        <div *ngIf="deathRates !== undefined">
+            <mat-card id="table-card" class="mat-elevation-z5">
+                <div id="death-rate-main-grid">
+                    <div class="death-rate-sub-grid">
+                        <div><b>State</b></div>
+                        <div><b>Death Rate</b></div>
+                    </div>
+                    <div><hr></div>
+                    <div *ngFor='let dr of deathRates'>
+                        <div class="death-rate-sub-grid" style="background-color: {{alternateBackgroundColor()}}">
+                            <div>{{dr.name}}</div>
+                            <div>{{deathRateAdjust(dr.value)}}%</div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div *ngIf="table[1]" class="fade-in">
+        <div *ngIf="maritalCount !== undefined">
+            <mat-card id="table-card" class="mat-elevation-z5">
+                <div id="marital-count-main-grid">
+                    <div class="marital-count-sub-grid">
+                        <div><b>State</b></div>
+                        <div><b>Married People</b></div>
+                    </div>
+                    <div><hr></div>
+                    <div *ngFor='let mc of maritalCount'>
+                        <div class="marital-count-sub-grid" style="background-color: {{alternateBackgroundColor()}}">
+                            <div>{{mc.name}}</div>
+                            <div>{{mc.value}}</div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div *ngIf="table[2]" class="fade-in">
+        <div *ngIf="companyAvgSalary !== undefined">
+            <mat-card id="table-card" class="mat-elevation-z5">
+                <div id="company-salary-main-grid">
+                    <div class="company-salary-sub-grid">
+                        <div><b>Top Companies</b></div>
+                        <div><b>Average Salaries</b></div>
+                    </div>
+                    <div><hr></div>
+                    <div *ngFor='let ca of companyAvgSalary'>
+                        <div class="company-salary-sub-grid" style="background-color: {{alternateBackgroundColor()}}">
+                            <div>{{ca.name}}</div>
+                            <div>{{money.format(ca.value)}}</div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div *ngIf="table[3]" class="fade-in">
+        <div *ngIf="avgPositionSalary !== undefined">
+            <mat-form-field appearance="fill">
+                <mat-label>Select Company</mat-label>
+                <mat-select [(ngModel)]="avgPositionCompanySelection" default="avgPositionCompanySelection">
+                    <mat-option *ngFor='let comp of companies' value="{{comp}}">{{comp}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-card id="table-card" class="mat-elevation-z5">
+                <div id="avg-position-main-grid">
+                    <div class="avg-position-sub-grid">
+                        <div><b>Company</b></div>
+                        <div><b>Position</b></div>
+                        <div><b>Average Salary</b></div>
+                    </div>
+                    <div><hr></div>
+                    <div *ngFor='let ap of filteredAvgPositionSalary'>
+                        <div class="avg-position-sub-grid" style="background-color: {{alternateBackgroundColor()}}">
+                            <div>{{ap.company_name}}</div>
+                            <div>{{ap.position}}</div>
+                            <div>{{money.format(ap.avg_salary)}}</div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
